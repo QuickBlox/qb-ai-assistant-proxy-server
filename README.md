@@ -22,6 +22,38 @@ Set up environment variables:
 1. Rename the `.env.example` file to `.env`.
 2. Edit the `.env` file and replace the placeholder values with your actual configuration.
 
+### Dev Setup
+1. Connection Protocol:
+For development purposes, you can use the HTTP protocol. Configure the `.env` file with the following default values for SSL_KEY_FILE and SSL_CERT_FILE:
+```
+SSL_KEY_FILE=''
+SSL_CERT_FILE=''
+```
+
+2. HOST Parameter:
+For development, set the HOST parameter to `localhost`. This restricts server accessibility to the PC where it is started:
+```
+HOST=localhost
+```
+
+
+### Production Setup
+1. Connection Protocol:
+For production environments, use the HTTPS protocol. Generate and register certificate keys, then set the paths to the keys in the SSL_KEY_FILE and SSL_CERT_FILE variables:
+```
+SSL_KEY_FILE='certificates/privatekey.pem'
+SSL_CERT_FILE='certificates/certificate.pem'
+```
+
+2. HOST Parameter:
+For production, set the HOST parameter to a specific IP address that should have access to the server:
+```
+HOST=192.168.0.100
+```
+
+**NOTE:**
+To allow server access from all network interfaces, set the HOST parameter to `0.0.0.0`. This option is suitable for both production and development processes:
+
 ## Usage
 
 To start the server, run the following command:
